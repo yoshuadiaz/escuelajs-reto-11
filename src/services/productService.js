@@ -26,8 +26,8 @@ class ProductService {
 
   async updateProductById({ id, ...data }) {
     try {
-      const id = await this.mongodb.update(this.collection, id, data);
-      return id;
+      const productId = await this.mongodb.update(this.collection, id, data);
+      return productId;
     } catch (error) {
       throw new Error(error);
     }
@@ -35,7 +35,7 @@ class ProductService {
 
   async deleteProductById(id) {
     try {
-      const id = await this.mongodb.delete(this.collection, id);
+      await this.mongodb.delete(this.collection, id);
       return id;
     } catch (error) {
       throw new Error(error);
